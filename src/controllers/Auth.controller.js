@@ -11,8 +11,10 @@ const signUp = async (req, res) => {
         mail,
       },
     });
+
+    console.log(validateEmail);
     if (validateEmail) {
-      res.status(401).json({ message: "email already exists" });
+      return res.status(401).json({ message: "email already exists" });
     } else {
       const newUser = await User.create({
         name,

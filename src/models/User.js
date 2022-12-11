@@ -21,4 +21,19 @@ export const User = sequelize.define("Users", {
   password: {
     type: DataTypes.STRING,
   },
+  favorites: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+
+  // timestamps: true
 });
+
+sequelize
+  .sync()
+  .then(() => {
+    console.log("UPDATED");
+  })
+  .catch((error) => {
+    console.log(error);
+  });

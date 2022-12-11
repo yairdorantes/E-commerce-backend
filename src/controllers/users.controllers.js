@@ -8,12 +8,13 @@ const getUsers = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 const getUser = async (req, res) => {
   const { id } = req.params;
   try {
     const user = await User.findByPk(id);
-    res.json(user);
     if (!user) return res.status(404).json({ message: "not found" });
+    return res.json(user);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
