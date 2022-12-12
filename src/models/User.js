@@ -22,8 +22,8 @@ export const User = sequelize.define("Users", {
     type: DataTypes.STRING,
   },
   favorites: {
-    type: DataTypes.JSON,
-    allowNull: true,
+    type: DataTypes.ARRAY(DataTypes.DECIMAL),
+    defaultValue: [],
   },
 
   // timestamps: true

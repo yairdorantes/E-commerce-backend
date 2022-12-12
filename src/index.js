@@ -1,9 +1,9 @@
 import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import "./models/User.js";
-import "./models/Cart.js";
 import "./models/Product.js";
 import "./models/SectionProduct.js";
+import "./models/Cart.js";
 async function main() {
   try {
     await sequelize.sync({ alter: true });

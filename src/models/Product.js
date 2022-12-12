@@ -10,15 +10,18 @@ export const Product = sequelize.define("Product", {
   price: {
     type: DataTypes.FLOAT,
   },
+  section: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Section,
+      key: "id",
+    },
+  },
   description: {
     type: DataTypes.STRING,
   },
   stock: {
     type: DataTypes.INTEGER,
-  },
-  main_image: {
-    type: DataTypes.BLOB,
-    defaultValue: null,
   },
   sales: {
     type: DataTypes.INTEGER,
@@ -31,12 +34,9 @@ export const Product = sequelize.define("Product", {
     type: DataTypes.FLOAT,
     defaultValue: 0,
   },
-  section: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Section,
-      key: "id",
-    },
+  main_image: {
+    type: DataTypes.TEXT,
+    defaultValue: null,
   },
 });
 
