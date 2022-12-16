@@ -32,8 +32,9 @@ router.get("/products-list/:from/:amount/:section", ProductCtrls.getProducts);
 router.post("/create-product", ProductCtrls.createProduct);
 ///FAVORITES
 
-router.get("/favorites/:id", FavoritesCtrls.getFavorites);
+router.get("/favorites/:id/:onlyIDs", FavoritesCtrls.getFavorites);
 router.post("/favorites/:id", FavoritesCtrls.addFavorite);
 router.delete("/favorites/:id", FavoritesCtrls.deleteFavorite);
+router.delete("/del-favorites/:id", FavoritesCtrls.deleteFavorites);
 
 export default router;

@@ -12,7 +12,7 @@ const signUp = async (req, res) => {
       },
     });
 
-    console.log(validateEmail);
+    // console.log(validateEmail);
     if (validateEmail) {
       return res.status(401).json({ message: "email already exists" });
     } else {
@@ -49,6 +49,7 @@ const login = async (req, res) => {
           name: userFound.name,
           mail: userFound.mail,
           lastname: userFound.lastname,
+          favorites: userFound.favorites,
         };
         const token = jwt.sign({ user: sendData }, "secret", {
           expiresIn: "7d",

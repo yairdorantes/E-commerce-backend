@@ -12,7 +12,6 @@ const getProducts = async (req, res) => {
       limit: amount,
     });
     const count = await Product.count({ where: { section: section } });
-    console.log(count);
 
     res.json({ count, products });
   } catch (error) {

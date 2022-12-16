@@ -2,7 +2,8 @@ import { User } from "../models/User.js";
 import { Product } from "../models/Product.js";
 
 const getFavorites = async (req, res) => {
-  const { id } = req.params;
+  const { id, onlyIDs } = req.params;
+
   try {
     const user = await User.findOne({
       where: {
@@ -12,19 +13,24 @@ const getFavorites = async (req, res) => {
     });
     const arrayOfStrings = user.favorites;
     const arrayOfNumbers = arrayOfStrings.map((string) => parseFloat(string));
+    // console.log(onlyIDs);
+    if (onlyIDs === "true") {
+      return res.json(arrayOfNumbers);
+    } else {
+      const favs = await Product.findAll({
+        where: {
+          id: arrayOfNumbers,
+        },
+        attributes: ["id", "description", "price", "main_image", "section"],
+      });
 
-    const favs = await Product.findAll({
-      where: {
-        id: arrayOfNumbers,
-      },
-      attributes: ["id", "description", "price", "main_image", "section"],
-    });
-
-    res.json(favs);
+      return res.json(favs);
+    }
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
 const addFavorite = async (req, res) => {
   try {
     const { id } = req.params;
@@ -48,7 +54,6 @@ const addFavorite = async (req, res) => {
         },
       }
     );
-    console.log(item);
 
     res.json(ancientData);
   } catch (error) {
@@ -57,9 +62,11 @@ const addFavorite = async (req, res) => {
 };
 
 const deleteFavorite = async (req, res) => {
+  let updatedArray;
   try {
     const { id } = req.params;
     const { items } = req.body;
+
     const user = await User.findOne({
       where: {
         id,
@@ -67,7 +74,7 @@ const deleteFavorite = async (req, res) => {
       attributes: ["favorites"],
     });
     const ancientData = user.favorites;
-    const updatedArray = ancientData.filter(
+    updatedArray = ancientData.filter(
       (item) => !items.includes(parseInt(item))
     );
 
@@ -88,8 +95,31 @@ const deleteFavorite = async (req, res) => {
   }
 };
 
+const deleteFavorites = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { items } = req.body;
+
+    await User.update(
+      {
+        favorites: items,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+
+    return res.json("Deleted items!");
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 export const favs = {
   getFavorites,
   addFavorite,
   deleteFavorite,
+  deleteFavorites,
 };

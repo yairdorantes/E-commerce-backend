@@ -20,19 +20,7 @@ const getCart = async (req, res) => {
       },
     });
 
-    checkProducts.map((product, key) => {
-      console.log(product.id);
-      // if (carrito[key].data[key].price != checkProducts[key].data[key].price) {
-      //   console.log("cambio");
-      // } else {
-      //   console.log("no changes");
-      // }
-    });
-
-    // console.log(checkProducts[0]);
-    res.json({ checkProducts, carrito });
-    // if (!carrito) return res.status(404).json({ message: "cart not found" });
-    return res.json(carrito[0].data[0].price);
+    res.json(carrito);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -62,7 +50,7 @@ const updateCart = async (req, res) => {
         },
       }
     );
-    console.log(data);
+    // console.log(data);
     return res.json({ message: "success!,updated" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
