@@ -2,7 +2,7 @@ import { json, Op } from "sequelize";
 import { Product } from "../models/Product.js";
 
 const searchProduct = async (req, res) => {
-  const { query } = req.body;
+  const { query } = req.params;
   console.log(query);
 
   try {

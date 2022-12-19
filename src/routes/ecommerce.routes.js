@@ -38,6 +38,6 @@ router.post("/favorites/:id", FavoritesCtrls.addFavorite);
 router.delete("/favorites/:id", FavoritesCtrls.deleteFavorite);
 router.delete("/del-favorites/:id", FavoritesCtrls.deleteFavorites);
 ////SEARCH PRODUCTS
-router.get("/search", SearchCtrls.searchProduct);
+router.get("/search/:query", SearchCtrls.searchProduct);
 
 export default router;
