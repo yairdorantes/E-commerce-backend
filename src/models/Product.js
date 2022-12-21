@@ -28,7 +28,7 @@ export const Product = sequelize.define("Product", {
     defaultValue: 0,
   },
   details: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   rate: {
     type: DataTypes.FLOAT,
@@ -37,6 +37,11 @@ export const Product = sequelize.define("Product", {
   main_image: {
     type: DataTypes.TEXT,
     defaultValue: null,
+  },
+  extra_images: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    // defaultValue: [],
+    defaultValue: [],
   },
 });
 

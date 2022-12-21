@@ -4,6 +4,7 @@ import "./models/User.js";
 import "./models/Product.js";
 import "./models/SectionProduct.js";
 import "./models/Cart.js";
+import "./models/Reviews.js";
 async function main() {
   try {
     await sequelize.sync({ alter: true });

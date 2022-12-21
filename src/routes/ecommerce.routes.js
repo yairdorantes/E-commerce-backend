@@ -7,6 +7,7 @@ import { cartMethods as CartCtrls } from "../controllers/Cart.controller.js";
 import { products as ProductCtrls } from "../controllers/Products.controller.js";
 import { favs as FavoritesCtrls } from "../controllers/Favorites.controller.js";
 import { searchs as SearchCtrls } from "../controllers/Searching.controller.js";
+import { reviews as ReviewsCtrls } from "../controllers/Reviews.controller.js";
 
 const router = Router();
 
@@ -39,5 +40,8 @@ router.delete("/favorites/:id", FavoritesCtrls.deleteFavorite);
 router.delete("/del-favorites/:id", FavoritesCtrls.deleteFavorites);
 ////SEARCH PRODUCTS
 router.get("/search/:query", SearchCtrls.searchProduct);
+////REVIEWS
+router.get("/reviews/:product", ReviewsCtrls.getReviews);
+router.post("/reviews", ReviewsCtrls.createReview);
 
 export default router;
