@@ -34,6 +34,10 @@ export const Product = sequelize.define("Product", {
     type: DataTypes.FLOAT,
     defaultValue: 0,
   },
+  rate_count: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
   main_image: {
     type: DataTypes.TEXT,
     defaultValue: null,

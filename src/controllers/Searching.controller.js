@@ -3,13 +3,13 @@ import { Product } from "../models/Product.js";
 
 const searchProduct = async (req, res) => {
   const { query } = req.params;
-  console.log(query);
+  // console.log(query);
 
   try {
     const items = await Product.findAll({
       where: {
         description: {
-          [Op.like]: `%${query}%`,
+          [Op.iLike]: `%${query}%`,
         },
       },
     });
