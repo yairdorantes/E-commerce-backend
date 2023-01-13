@@ -12,7 +12,6 @@ async function main() {
     app.listen(4000, () => {
       console.log("Server is running on port " + "jajaj");
     });
-    // QueryInterface.removeColumn("Carts");
   } catch (e) {
     console.log(e);
   }

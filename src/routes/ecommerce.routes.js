@@ -8,7 +8,7 @@ import { products as ProductCtrls } from "../controllers/Products.controller.js"
 import { favs as FavoritesCtrls } from "../controllers/Favorites.controller.js";
 import { searchs as SearchCtrls } from "../controllers/Searching.controller.js";
 import { reviews as ReviewsCtrls } from "../controllers/Reviews.controller.js";
-
+import { offers as OffersCtrls } from "../controllers/Offers.Ctrls.js";
 const router = Router();
 
 router.get("/", DashBoard.mainView);
@@ -43,5 +43,6 @@ router.get("/search/:query", SearchCtrls.searchProduct);
 ////REVIEWS
 router.get("/reviews/:product", ReviewsCtrls.getReviews);
 router.post("/reviews", ReviewsCtrls.createReview);
-
+/////OFFERS
+router.get("/offers", OffersCtrls.getOffers);
 export default router;
